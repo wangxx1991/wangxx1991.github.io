@@ -1976,13 +1976,13 @@ pre .id {
     white-space: nowrap;
     text-overflow: ellipsis;
     display: block;
-    color: #918f8f;
+    color: #282727;
     text-shadow: 1px 1px rgba(77, 77, 77, .25)
 }
 
 .tools-col .tools-section .search-ul .search-title .icon {
     margin-right: 10px;
-    color: #c2c0c0
+    color: #282727
 }
 
 .tools-col .tools-section .search-ul .search-title:hover {
@@ -1992,7 +1992,7 @@ pre .id {
 .tools-col .tools-section .search-ul .search-tag,
 .tools-col .tools-section .search-ul .search-time {
     font-size: 12px;
-    color: #c2c0c0;
+    color: #424040;
     margin-right: 10px
 }
 
