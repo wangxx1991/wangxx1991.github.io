@@ -176,21 +176,22 @@
       
         <h3 id="vue-router学习记录"><a href="#vue-router学习记录" class="headerlink" title="vue-router学习记录"></a>vue-router学习记录</h3><ul>
 <li><p>定义组件，从其他文件import过来</p>
-<pre><code>``import goods from &apos;components/goods/goods&apos;;``
-</code></pre></li>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> goods <span class="keyword">from</span> <span class="string">'components/goods/goods'</span>;</div></pre></td></tr></table></figure>
+</li>
 <li><p>如果使用模块化机制变成，导入vue和VueRouter ,要调用Vue.use(VueRouter);</p>
-<pre><code>``Vue.use(VueRouter);``
-</code></pre></li>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Vue.use(VueRouter);</div></pre></td></tr></table></figure>
+</li>
 <li><p>定义路由，每个路由应该映射一个组件，其中“component”可以是通过Vue.extend()创建的组件构造器。或者只是一个组件配置对象;</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">const routes = [&#123;</div><div class="line">    path: &apos;/goods&apos;,</div><div class="line">    component: goods</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> routes = [&#123;</div><div class="line">    <span class="attr">path</span>: <span class="string">'/goods'</span>,</div><div class="line">    <span class="attr">component</span>: goods</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
 <p>  注意格式，在项目中比较严格，格式错误也会报错.</p>
 </li>
 <li><p>创建router实例，然后传routes配置</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">    const router = new VueRouter(&#123;</div><div class="line">        routes</div><div class="line">    &#125;);</div><div class="line">    ````</div><div class="line"></div><div class="line">+ 创建和挂载根实例。要通过router配置参数注入路由</div></pre></td></tr></table></figure>
-<p>  new Vue({</p>
-<pre><code>router: router,
-render: h =&gt; h(App)
-</code></pre><p>  }).$mount(‘#app’);<br>  `````</p>
+</li>
+</ul>
+<pre><code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(&#123;</div><div class="line">    routes</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</code></pre><ul>
+<li><p>创建和挂载根实例。要通过router配置参数注入路由</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> Vue(&#123;</div><div class="line">    <span class="attr">router</span>: router,</div><div class="line">    <span class="attr">render</span>: <span class="function"><span class="params">h</span> =&gt;</span> h(App)</div><div class="line">&#125;).$mount(<span class="string">'#app'</span>);</div></pre></td></tr></table></figure>
 <p>  这里和官网介绍的不太一样，注意new前定一个const app会报错，”app 变量在接下来没有使用”，删除后正常。<br>  0.7版本是先：let app = Vue.extend(App);然后router.start(app, ‘#app’);，2.0版本直接在new中.</p>
 </li>
 </ul>
