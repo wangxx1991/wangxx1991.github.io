@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style type="text/css">
+body,
+div,
+img,
+span,
+a {
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+#container {
+    position: relative;
+    width: 1000px;
+    height: 580px;
+    overflow: hidden;
+    left: 500px;
+    top: 200px;
+}
+
+#imgList {
+    position: absolute;
+    width: 5000px;
+    height: 580px;
+}
+
+#imgList img {
+    width: 1000px;
+    height: 580px;
+    float: left;
+}
+
+#buttons {
+    position: absolute;
+    bottom: 10px;
+    left: 455px;
+}
+
+#buttons span {
+    width: 10px;
+    height: 10px;
+    background: #F5F5F5;
+    border-radius: 50%;
+    margin-right: 10px;
+    border: 1px solid #fff;
+    float: left;
+    cursor: pointer;
+}
+
+.arrow {
+    position: absolute;
+    top: 250px;
+    width: 50px;
+    height: 50px;
+    font-size: 40px;
+    text-align: center;
+    color: white;
+}
+
+#prev {
+    left: 10px;
+}
+
+#next {
+    right: 10px;
+}
+
+#buttons .on {
+    background: red;
+}
+
+.arrow {
+    display: none;
+}
+
+#container:hover .arrow {
+    display: block;
+}
+</style>
+
+<body>
+    <div id="container">
+        <div id="imgList" style="left:0px;">
+            <!-- <img src="img/1.jpg" alt=""> -->
+            <img src="img/1.jpg" alt="">
+            <img src="img/2.jpg" alt="">
+            <img src="img/3.jpg" alt="">
+            <img src="img/4.jpg" alt="">
+            <img src="img/5.jpg" alt="">
+            <!-- <img src="img/5.jpg" alt=""> -->
+        </div>
+        <div id="buttons">
+            <span index="1" class="on"></span>
+            <span index="2"></span>
+            <span index="3"></span>
+            <span index="4"></span>
+            <span index="5"></span>
+        </div>
+        <a href="#" id="prev" class="arrow">&lt;</a>
+        <a href="#" id="next" class="arrow">&gt;</a>
+    </div>
+</body>
+<script type="text/javascript">
+window.onload = function() {
+    var container = document.getElementById('container');
+    var oPrev = document.getElementById('prev');
+    var oNext = document.getElementById('next');
+    var oList = document.getElementById('imgList');
+    var oP = document.getElementById('point');
+    var buttons = document.getElementById('buttons').getElementsByTagName('span');
+    var index = 1;
+    //判断到图片切换临界时如何切换；切换图片。
+    function animate(offset) {
+        var newleft = parseInt(oList.style.left) + offset;
+        if (newleft < -4000) {
+            newleft = 0;
+        } else if (newleft > 0) {
+            newleft = -4000;
+        }
+        oList.style.left = newleft + 'px';
+    };
+
+    function arrowon() {
+        for (var i = 0; i < buttons.length; i++) {
+            if (buttons[i].className == 'on') {
+                buttons[i].className = '';
+            }
+        }
+        buttons[index - 1].className = 'on';
+    }
+    oNext.onclick = function() {
+
+        index += 1;
+        if (index > 5) {
+            index = 1;
+        }
+
+        arrowon();
+        animate(-1000);
+
+    }
+    oPrev.onclick = function() {
+        index -= 1;
+        if (index < 1) {
+            index = 5
+        }
+        arrowon();
+        animate(1000);
+    }
+
+    function play() {
+        timer = setInterval(function() {
+            oNext.onclick()
+        }, 1500)
+    }
+
+    container.onmouseover = function() {
+        clearInterval(timer);
+    }
+
+    container.onmouseout = function() {
+        play();
+    }
+
+    play();
+    for (var i = 0; i < buttons.length; i++) {
+        buttons[i].onclick = function() {
+            var oindex = this.getAttribute('index');
+            var newleft = (oindex - 1) * (-1000);
+            console.log(newleft)
+            oList.style.left = newleft + 'px';
+            index = oindex;
+            arrowon();
+
+        }
+    }
+}
+</script>
+
+</html>
