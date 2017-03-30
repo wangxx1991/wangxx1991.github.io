@@ -27,7 +27,7 @@
   <style type="text/css">
   
     #container.show {
-      background: linear-gradient(225deg,#85ABE2,#7CE6D8);
+      background: url(../bg.png);
     }
   </style>
   
@@ -154,6 +154,81 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-github建站小纪" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/29/github建站小纪/">github建站小纪</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/29/github建站小纪/" class="archive-article-date">
+  	<time datetime="2017-03-29T15:45:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="Hexo-github建站过程中遇到的问题小结"><a href="#Hexo-github建站过程中遇到的问题小结" class="headerlink" title="Hexo + github建站过程中遇到的问题小结"></a>Hexo + github建站过程中遇到的问题小结</h4><ul>
+<li><p>安装Hexo, <code>$ npm install hexo-cli -g</code> 报错，Error: EPERM: operation not permitted, mkdir ‘C:\Program Files\nodejs\node cache\hexo-cli’</p>
+<blockquote>
+<p>需要在admin权限下操作</p>
+</blockquote>
+</li>
+<li><p>启动服务器，<code>$ hexo s #</code> 或者 <code>hexo server</code> ,无法正常打开<a href="http://localhost:4000/">http://localhost:4000/</a> 查看</p>
+<blockquote>
+<p>原因：安装了福昕阅读器，4000端口被占，hexo s -p 5000 ，换成5000端口</p>
+</blockquote>
+</li>
+</ul>
+        
+          <a class="article-more-a" href="/2017/03/29/github建站小纪/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/29/github建站小纪/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-vue-router摘要" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -181,21 +256,10 @@
 <li><p>如果使用模块化机制变成，导入vue和VueRouter ,要调用Vue.use(VueRouter);</p>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Vue.use(VueRouter);</div></pre></td></tr></table></figure>
 </li>
-<li><p>定义路由，每个路由应该映射一个组件，其中“component”可以是通过Vue.extend()创建的组件构造器。或者只是一个组件配置对象;</p>
-  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> routes = [&#123;</div><div class="line">    <span class="attr">path</span>: <span class="string">'/goods'</span>,</div><div class="line">    <span class="attr">component</span>: goods</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
-<p>  注意格式，在项目中比较严格，格式错误也会报错.</p>
-</li>
-<li><p>创建router实例，然后传routes配置</p>
-</li>
 </ul>
-<pre><code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(&#123;</div><div class="line">    routes</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-</code></pre><ul>
-<li><p>创建和挂载根实例。要通过router配置参数注入路由</p>
-  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> Vue(&#123;</div><div class="line">    <span class="attr">router</span>: router,</div><div class="line">    <span class="attr">render</span>: <span class="function"><span class="params">h</span> =&gt;</span> h(App)</div><div class="line">&#125;).$mount(<span class="string">'#app'</span>);</div></pre></td></tr></table></figure>
-<p>  这里和官网介绍的不太一样，注意new前定一个const app会报错，”app 变量在接下来没有使用”，删除后正常。<br>  0.7版本是先：let app = Vue.extend(App);然后router.start(app, ‘#app’);，2.0版本直接在new中.</p>
-</li>
-</ul>
-
+        
+          <a class="article-more-a" href="/2017/03/28/vue-router摘要/#more">more >></a>
+        
       
 
       
@@ -394,11 +458,15 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">日常</a>
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">日常</a>
               </li>
             
             <div class="clearfix"></div>
@@ -481,7 +549,7 @@
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">没时间~</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">没有时间啦~~！！请点击&lt;a href=&quot;https://wangxx1991.github.io/myresume/&quot;&gt;个人简历&lt;/a&gt;</div>
   	  	
     	</section>
     
