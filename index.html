@@ -154,6 +154,127 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-关于Vue2-0开发单页应用的一些记录" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/30/关于Vue2-0开发单页应用的一些记录/">关于Vue2.0开发单页应用的一些记录</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/30/关于Vue2-0开发单页应用的一些记录/" class="archive-article-date">
+  	<time datetime="2017-03-30T09:35:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>以下可能很多都是自己的方式去理解，可能有误，仅作记录回顾，后续继续学习更新。</p>
+</blockquote>
+<h5 id="vur-router-路由设置，做页面跳转"><a href="#vur-router-路由设置，做页面跳转" class="headerlink" title="vur-router (路由设置，做页面跳转)"></a>vur-router (路由设置，做页面跳转)</h5><ul>
+<li><p>创建组件：创建单页面应用需要的渲染的组件；</p>
+</li>
+<li><p>定义路由（组件）：（main.js 中）</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">const routes = [</div><div class="line">    &#123; path: &apos;/home&apos;, component: home &#125;,</div><div class="line">    &#123; path: &apos;/about&apos;, component: about &#125;</div><div class="line">];</div></pre></td></tr></table></figure>
+</li>
+<li><p>创建路由：创建VueRouter实例；</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">const router = new VueRouter(&#123;</div><div class="line">    routes: routes</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+<li><p>使用router-link组件来导航,to 属性指定链接（在主组件App.vue中）：</p>
+   <figure class="highlight plain"><figcaption><span>to="/about">About```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- 使用&lt;router-view&gt;标签，路由匹配到的组件将渲染在此</div><div class="line"></div><div class="line">    ````&lt;router-view&gt;&lt;/router-view&gt;`</div></pre></td></tr></table></figure>
+</li>
+<li><p>启动路由：</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> Vue(&#123;</div><div class="line">    <span class="attr">router</span>: router,</div><div class="line">    <span class="attr">render</span>: <span class="function"><span class="params">h</span> =&gt;</span> h(<span class="string">'router-view'</span>)</div><div class="line">&#125;).$mount(<span class="string">'#app'</span>)</div></pre></td></tr></table></figure>
+<p>  可参考<a href="http://www.doc00.com/doc/1001004eg" target="_blank" rel="external">此篇博文</a>，及这篇<a href="http://www.cnblogs.com/keepfool/p/5690366.html" target="_blank" rel="external">博文</a></p>
+</li>
+</ul>
+<h6 id="简单代码如下："><a href="#简单代码如下：" class="headerlink" title="简单代码如下："></a>简单代码如下：</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 0. 如果使用模块化机制编程，導入Vue和VueRouter，要调用 Vue.use(VueRouter)</span></div><div class="line"></div><div class="line"><span class="comment">// 1. 定义（路由）组件。</span></div><div class="line"><span class="comment">// 可以从其他文件 import 进来</span></div><div class="line"><span class="keyword">const</span> Foo = &#123; <span class="attr">template</span>: <span class="string">'&lt;div&gt;foo&lt;/div&gt;'</span> &#125;</div><div class="line"><span class="keyword">const</span> Bar = &#123; <span class="attr">template</span>: <span class="string">'&lt;div&gt;bar&lt;/div&gt;'</span> &#125;</div><div class="line"></div><div class="line"><span class="comment">// 2. 定义路由</span></div><div class="line"><span class="comment">// 每个路由应该映射一个组件。 其中"component" 可以是</span></div><div class="line"><span class="comment">// 通过 Vue.extend() 创建的组件构造器，</span></div><div class="line"><span class="comment">// 或者，只是一个组件配置对象。</span></div><div class="line"><span class="comment">// 我们晚点再讨论嵌套路由。</span></div><div class="line"><span class="keyword">const</span> routes = [</div><div class="line">  &#123; <span class="attr">path</span>: <span class="string">'/foo'</span>, <span class="attr">component</span>: Foo &#125;,</div><div class="line">  &#123; <span class="attr">path</span>: <span class="string">'/bar'</span>, <span class="attr">component</span>: Bar &#125;</div><div class="line">]</div><div class="line"></div><div class="line"><span class="comment">// 3. 创建 router 实例，然后传 `routes` 配置</span></div><div class="line"><span class="comment">// 你还可以传别的配置参数, 不过先这么简单着吧。</span></div><div class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(&#123;</div><div class="line">  routes <span class="comment">// （缩写）相当于 routes: routes</span></div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="comment">// 4. 创建和挂载根实例。</span></div><div class="line"><span class="comment">// 记得要通过 router 配置参数注入路由，</span></div><div class="line"><span class="comment">// 从而让整个应用都有路由功能</span></div><div class="line"><span class="keyword">new</span> Vue(&#123;</div><div class="line">        <span class="attr">router</span>: router,</div><div class="line">        <span class="attr">render</span>: <span class="function"><span class="params">h</span> =&gt;</span> h(<span class="string">'router-view'</span>)</div><div class="line">    &#125;).$mount(<span class="string">'#app'</span>)</div></pre></td></tr></table></figure>
+<h5 id="Vue-Resourse"><a href="#Vue-Resourse" class="headerlink" title="Vue-Resourse"></a>Vue-Resourse</h5><p>vue-resource是Vue.js的一款插件，它可以通过XMLHttpRequest或JSONP发起请求并处理响应。</p>
+<ol>
+<li><p>引入组件：在入口文件main.js中引入</p>
+<p> <code>import VueResourcr from &#39;vue-resource&#39;</code></p>
+</li>
+<li><p>全局注册：</p>
+<p> <code>Vue.use(VueResource)</code></p>
+</li>
+<li><p>基本语法：</p>
+<ul>
+<li>基于全局Vue对象使用http：</li>
+</ul>
+</li>
+</ol>
+<pre><code>        Vue.http.get(&apos;/someUrl&apos;, [options]).then(successCallback, errorCallback);
+        Vue.http.post(&apos;/someUrl&apos;, [body], [options]).then(successCallback, errorCallback);
+
+- 在一个实例中使用$http:
+
+        this.$http.get(&apos;/someUrl&apos;, [options]).then((response) =&gt; {
+            //响应成功回调
+        }，(response) =&gt; {
+                //响应失败回调
+        });
+
+    &gt; 这里使用的是ES6中的箭头函数写法：(可参考[这篇博文](http://blog.csdn.net/mevicky/article/details/49942559))
+
+
+            ([param] [, param]) =&gt; {
+                statements
+            }
+
+            param =&gt; expression
+</code></pre><p>TIP：首先我们需要给app.vue定义一个seller的对象：可以通过data()方法。在vue.js中，这个data属性是一个函数（可查看链接），因为组件是可以被复用的，如果定义一个对象然后修改某一个组件的话会影响另外的组件，所以这里定义成一个函数。这个函数return一个对象，对象里面有seller对象，先定为空，然后我们通过发送AJAX请求去拿到一个seller对象，然后send给它。这样就可以拿到seller对象的数据。</p>
+<h5 id="QUESTION"><a href="#QUESTION" class="headerlink" title="QUESTION"></a>QUESTION</h5><ol>
+<li>在vue组件中 import的是整个对应的组件还是该组件下 export 的对象？按照目前的理解应该是整个组件，但是根据ES6的说明，import传入的是export的对外对象，是否是webpack的编译缘故？</li>
+</ol>
+<p>2.</p>
+<p>更详细，待续……<br>参考<a href="http://www.runoob.com/w3cnote/vue2-start-coding.html" target="_blank" rel="external">博文1</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/30/关于Vue2-0开发单页应用的一些记录/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-github建站小纪" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
