@@ -154,6 +154,195 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-前端基础回顾" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/07/前端基础回顾/">前端基础回顾</a>
+    </h1>
+  
+
+        
+        <a href="/2017/04/07/前端基础回顾/" class="archive-article-date">
+  	<time datetime="2017-04-06T16:00:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><h5 id="CSS3新增伪类："><a href="#CSS3新增伪类：" class="headerlink" title="CSS3新增伪类："></a>CSS3新增伪类：</h5><p> 举例：</p>
+<ul>
+<li>p:first-of-type    选择属于其父元素的首个 <code>&lt;p&gt;</code> 元素的每个<code>&lt;p&gt;</code>元素。</li>
+<li>p:last-of-type    选择属于其父元素的最后 <code>&lt;p&gt;</code>元素的每个<code>&lt;p&gt;</code>元素。</li>
+<li>p:only-of-type    选择属于其父元素唯一的<code>&lt;p&gt;</code>元素的每个<code>&lt;p&gt;</code>元素。</li>
+<li>p:only-child        选择属于其父元素的唯一子元素的每个<code>&lt;p&gt;</code>元素。</li>
+<li>p:nth-child(2)    选择属于其父元素的第二个子元素的每个<code>&lt;p&gt;</code>元素。</li>
+<li>:after            在元素之前添加内容,也可以用来做清除浮动。</li>
+<li>:before            在元素之后添加内容</li>
+<li>:enabled</li>
+<li>:disabled         控制表单控件的禁用状态。</li>
+<li>:checked        单选框或复选框被选中。</li>
+</ul>
+<h5 id="居中"><a href="#居中" class="headerlink" title="居中"></a>居中</h5><h5 id="水平居中"><a href="#水平居中" class="headerlink" title="水平居中"></a>水平居中</h5><ul>
+<li>行内元素：</li>
+</ul>
+<p><code>.parent{ text-center }</code></p>
+<p>将行内元素包裹在一个属性display为block的父元素<code>.parent</code>下；</p>
+<ul>
+<li>块级元素：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">.item &#123;</div><div class="line">    /* 这里可以设置顶端外边距 */</div><div class="line">    margin: 10px auto;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>多个块状元素:</li>
+</ul>
+<p><code>.parent{ text-center }</code></p>
+<p>将元素的display属性设置为inline-block，并且把父元素的text-align属性设置为center;</p>
+<p>或者用<a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html?utm_source=tuicool" target="_blank" rel="external">flex</a>布局：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">.parent &#123;</div><div class="line">    display:flex;</div><div class="line">    justify-content:center;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>使用flexbox布局，只需要把待处理的块状元素的父元素添加属性display:flex及 justify-content:center 即可</p>
+<h5 id="垂直居中"><a href="#垂直居中" class="headerlink" title="垂直居中"></a>垂直居中</h5><ul>
+<li>单行的行内元素</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">.parent &#123;</div><div class="line">    background: #222;</div><div class="line">    height: 200px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 以下代码中，将a元素的height和line-height设置的和父元素一样高度即可实现垂直居中 */</div><div class="line"></div><div class="line">a &#123;</div><div class="line">    height: 200px;</div><div class="line">    line-height:200px;</div><div class="line">    color: #FFF;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>多行的行内元素</li>
+</ul>
+<p>组合使用display:table-cell和vertical-align:middle属性来定义需要居中的元素的父容器元素生成效果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">.parent &#123;</div><div class="line">    background: #222;</div><div class="line">    width: 300px;</div><div class="line">    height: 300px;</div><div class="line">    /* 以下属性垂直居中 */</div><div class="line">    display: table-cell;</div><div class="line">    vertical-align:middle;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>已知高度的块状元素</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">.item&#123;</div><div class="line">    top: 50%;</div><div class="line">    margin-top: -50px;  /* margin-top值为自身高度的一半 */</div><div class="line">    position: absolute;</div><div class="line">    padding:0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>未知高度的块状元素</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">.item&#123;</div><div class="line">    top: 50%;</div><div class="line">    position: absolute;</div><div class="line">    transform: translateY(-50%);  /* 使用css3的transform来实现 */</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="水平垂直居中"><a href="#水平垂直居中" class="headerlink" title="水平垂直居中"></a>水平垂直居中</h5><ul>
+<li>未知高度和宽度元素解决方案1(css3)</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">.item&#123;</div><div class="line">    position: absolute;</div><div class="line">    top: 50%;</div><div class="line">    left: 50%;</div><div class="line">    transform: translate(-50%, -50%);  /* 使用css3的transform来实现 */</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>未知高度和宽度元素解决方案2(flex布局)</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">.parent&#123;</div><div class="line">    display: flex;</div><div class="line">    justify-content:center;</div><div class="line">    align-items: center;</div><div class="line">    /* 注意这里需要设置高度来查看垂直居中效果 */</div><div class="line">    background: #AAA;</div><div class="line">    height: 300px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>已知高度和宽度的元素解决方案1</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">.item&#123;</div><div class="line">    position: absolute;</div><div class="line">    top: 50%;</div><div class="line">    left: 50%;</div><div class="line">    margin-top: -75px;  /* 设置margin-left / margin-top 为自身高度的一半 */</div><div class="line">    margin-left: -75px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>已知高度和宽度的元素解决方案2<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">.item&#123;</div><div class="line">    position: absolute;</div><div class="line">    margin:auto;</div><div class="line">    left:0;</div><div class="line">    top:0;</div><div class="line">    right:0;</div><div class="line">    bottom:0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>这是一种不常见的居中方法，可自适应，比方案2更智能</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">基础</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/07/前端基础回顾/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-豆瓣电影demo" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/04/豆瓣电影demo/">豆瓣电影demo</a>
+    </h1>
+  
+
+        
+        <a href="/2017/04/04/豆瓣电影demo/" class="archive-article-date">
+  	<time datetime="2017-04-04T06:37:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">.</div><div class="line">|-- build                            // 项目构建相关代码</div><div class="line">|   |-- build.js                     // 生产环境构建代码</div><div class="line">|   |-- check-version.js             // 检查 node、npm 等版本</div><div class="line">|   |-- dev-client.js                // 热重载相关</div><div class="line">|   |-- dev-server.js                // 构建本地服务器</div><div class="line">|   |-- utils.js                     // 构建工具相关</div><div class="line">|   |-- webpack.base.conf.js         // webpack 基础配置（出入口和 loader）</div><div class="line">|   |-- webpack.dev.conf.js          // webpack 开发环境配置</div><div class="line">|   |-- webpack.prod.conf.js         // webpack 生产环境配置</div><div class="line">|-- config                           // 项目开发环境配置</div><div class="line">|   |-- dev.env.js                   // 开发环境变量</div><div class="line">|   |-- index.js                     // 项目一些配置变量（开发环境接口转发将在此配置）</div><div class="line">|   |-- prod.env.js                  // 生产环境变量</div><div class="line">|   |-- test.env.js                  // 测试环境变量</div><div class="line">|-- src                              // 源码目录</div><div class="line">|   |-- components                   // vue 公共组件</div><div class="line">|   |-- App.vue                      // 页面入口文件</div><div class="line">|   |-- main.js                      // 程序入口文件，加载各种公共组件</div><div class="line">|-- static                           // 静态文件，比如一些图片，json数据等</div><div class="line">|-- test                             // 自动化测试相关文件</div><div class="line">|-- .babelrc                         // ES6语法编译配置</div><div class="line">|-- .editorconfig                    // 定义代码格式</div><div class="line">|-- .eslintignore                    // ESLint 检查忽略的文件</div><div class="line">|-- .eslistrc.js                     // ESLint 文件，如需更改规则则在此文件添加</div><div class="line">|-- .gitignore                       // git 上传需要忽略的文件</div><div class="line">|-- README.md                        // 项目说明</div><div class="line">|-- index.html                       // 入口页面</div><div class="line">|-- package.json                     // 项目基本信息</div><div class="line">.</div></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/04/豆瓣电影demo/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-关于Vue2-0开发单页应用的一些记录" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -584,6 +773,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">基础</a>
               </li>
              
               <li class="article-tag-list-item">
